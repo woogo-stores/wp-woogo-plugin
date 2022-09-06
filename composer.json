@@ -1,0 +1,36 @@
+{
+    "name": "woogo-stores/wp-woogo-plugin",
+    "description": "Woogostores WordPress plugin",
+    "keywords": ["woogo", "wordpress"],
+    "type" : "wordpress-plugin",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Patrick Leblanc",
+            "email": "support@woogostores.com",
+            "homepage": "https://woogostores.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+		"symfony/var-dumper": "^5.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Woogostores\\Plugin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Woogostores\\Plugin\\Tests\\": "tests/"
+        }
+    }
+}
