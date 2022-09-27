@@ -2,7 +2,7 @@
     "name": "woogo-stores/wp-woogo-plugin",
     "description": "Woogostores WordPress plugin",
     "keywords": ["woogo", "wordpress"],
-    "type" : "wordpress-plugin",
+    "type" : "wordpress-muplugin",
     "license": "GPL-3.0+",
     "authors": [
         {
@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "php": ">=8.0"
+        "php": ">=8.0",
+        "roots/bedrock-autoloader": "^1.0"
     },
     "require-dev": {
 		"symfony/var-dumper": "^5.0",
