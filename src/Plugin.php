@@ -6,7 +6,6 @@ namespace Woogostores\Plugin;
 
 use Woogostores\Plugin\Inc\DependencyInjection\Container;
 use Woogostores\Plugin\Inc\EventManagement\EventManager;
-use Woogostores\Plugin\Modules\Licenses\DisablerSubscriber;
 use Woogostores\Plugin\Modules\Woocommerce\CleanupSubscriber;
 use Woogostores\Plugin\Modules\Woogo\ConfigSubscriber;
 
@@ -54,7 +53,7 @@ class Plugin
         $this->container['event_manager'] = fn ($c) => new EventManager();
 
         $this->container['event_manager']->addSubscriber(new CleanupSubscriber());
-        $this->container['event_manager']->addSubscriber(new DisablerSubscriber());
+
         $this->container['event_manager']->addSubscriber(new ConfigSubscriber());
 
 

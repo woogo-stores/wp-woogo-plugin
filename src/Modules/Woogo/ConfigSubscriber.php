@@ -24,7 +24,11 @@ class ConfigSubscriber implements SubscriberInterface
 
     public function preOptionBlogPublic()
     {
-        if (str_contains($_SERVER['SERVER_NAME'], 'mywoogo.dev') || str_ends_with($_SERVER['SERVER_NAME'], '.test')) {
+        if(defined('WP_CLI') ){
+            return;
+        }
+
+        if ( str_contains($_SERVER['SERVER_NAME'], 'mywoogo.dev') || str_ends_with($_SERVER['SERVER_NAME'], '.test')) {
             $this->publicBlog = false;
             return 0;
         }
