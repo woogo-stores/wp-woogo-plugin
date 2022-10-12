@@ -8,6 +8,7 @@ use Woogostores\Plugin\Inc\DependencyInjection\Container;
 use Woogostores\Plugin\Inc\EventManagement\EventManager;
 use Woogostores\Plugin\Modules\Woocommerce\CleanupSubscriber;
 use Woogostores\Plugin\Modules\Woogo\ConfigSubscriber;
+use Woogostores\Plugin\Modules;
 
 class Plugin
 {
@@ -55,6 +56,7 @@ class Plugin
         $this->container['event_manager']->addSubscriber(new CleanupSubscriber());
 
         $this->container['event_manager']->addSubscriber(new ConfigSubscriber());
+        $this->container['event_manager']->addSubscriber(new Modules\Plugins\PDFConfigSubscriber());
 
 
 
