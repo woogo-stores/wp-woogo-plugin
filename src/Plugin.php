@@ -57,6 +57,7 @@ class Plugin
 
         $this->container['event_manager']->addSubscriber(new ConfigSubscriber());
         $this->container['event_manager']->addSubscriber(new Modules\Plugins\PDFConfigSubscriber());
+        $this->container['event_manager']->addSubscriber(new Modules\Plugins\ElementorConfigSubscriber());
 
 
 

@@ -6,13 +6,12 @@ namespace Woogostores\Plugin\Modules\Plugins;
 
 use Woogostores\Plugin\Inc\EventManagement\SubscriberInterface;
 
-class PDFConfigSubscriber implements SubscriberInterface
+class ElementorConfigSubscriber implements SubscriberInterface
 {
     public static function getSubscribedEvents(): array
     {
         return [
-            'wpo_wcpdf_tmp_path' => fn ($tmp_base) => '/tmp/',
-            'wpo_wcpdf_use_path' => fn () => false,
+            'elementor/files/temp-dir' => fn ($tmp_base) => '/tmp/elementor/',
         ];
     }
 }

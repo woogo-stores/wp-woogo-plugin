@@ -18,8 +18,20 @@ class ConfigSubscriber implements SubscriberInterface
         return [
             'pre_option_blog_public' => 'preOptionBlogPublic',
             'admin_notices' => 'adminNotices',
+            'auto_core_update_send_email' => '__return_false',
+            'auto_plugin_update_send_email' => '__return_false',
+            'auto_theme_update_send_email' => '__return_false',
+            'admin_init' => fn () => remove_action('admin_notices', 'update_nag', 3),
             'wp_mail' => ['disableEmails', PHP_INT_MAX],
+            'user_has_cap' => ['disableOptionPage', 10, 3]
         ];
+    }
+    public function disableOptionPage($allCaps, $caps, $args): array
+    {
+        if ($_SERVER['SCRIPT_NAME'] == '/wp/wp-admin/options.php' && $_SERVER['REQUEST_METHOD'] == 'GET') {
+            $allCaps['manage_options'] = false;
+        }
+        return $allCaps;
     }
 
     public function preOptionBlogPublic()
