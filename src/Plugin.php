@@ -56,6 +56,7 @@ class Plugin
         $this->container['event_manager']->addSubscriber(new CleanupSubscriber());
 
         $this->container['event_manager']->addSubscriber(new ConfigSubscriber());
+        $this->container['event_manager']->addSubscriber(new Modules\Woogo\AdminStyleSubscriber($this->container->get('plugin_dir_url')));
         $this->container['event_manager']->addSubscriber(new Modules\Plugins\PDFConfigSubscriber());
         $this->container['event_manager']->addSubscriber(new Modules\Plugins\ElementorConfigSubscriber());
 
@@ -89,10 +90,10 @@ class Plugin
             return;
         }
 
-        $this->container['plugin_basename'] = plugin_basename($this->container['file_path']);
-        $this->container['plugin_dir_path'] = plugin_dir_path($this->container['file_path']);
-        $this->container['plugin_dir_url'] = plugin_dir_url($this->container['file_path']);
-        $this->container['plugin_relative_path'] = '/'.trim(str_replace($this->container['root_directory'], '', plugin_dir_path($this->container['file_path'])), '/');
+        // $this->container['plugin_basename'] = plugin_basename($this->container['file_path']);
+        // $this->container['plugin_dir_path'] = plugin_dir_path($this->container['file_path']);
+        // $this->container['plugin_dir_url'] = plugin_dir_url($this->container['file_path']);
+        // $this->container['plugin_relative_path'] = '/'.trim(str_replace($this->container['root_directory'], '', plugin_dir_path($this->container['file_path'])), '/');
 
         // foreach ($this->container['local_commands'] as $command) {
         //     $this->registerCommand($command);

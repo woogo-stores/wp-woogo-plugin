@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Woogostores\Plugin\Modules\Woogo;
 
+use PDO;
 use Woogostores\Plugin\Inc\EventManagement\SubscriberInterface;
 
 class ConfigSubscriber implements SubscriberInterface
@@ -23,9 +24,12 @@ class ConfigSubscriber implements SubscriberInterface
             'auto_theme_update_send_email' => '__return_false',
             'admin_init' => fn () => remove_action('admin_notices', 'update_nag', 3),
             'wp_mail' => ['disableEmails', PHP_INT_MAX],
-            'user_has_cap' => ['disableOptionPage', 10, 3]
+            'user_has_cap' => ['disableOptionPage', 10, 3],
+            'wp_editor_set_quality' => fn () => 96, //keep images at high quality
+            'jpeg_quality' => fn () => 96, //Jpeg has its own setting.
         ];
     }
+
     public function disableOptionPage($allCaps, $caps, $args): array
     {
         if ($_SERVER['SCRIPT_NAME'] == '/wp/wp-admin/options.php' && $_SERVER['REQUEST_METHOD'] == 'GET') {
